@@ -97,18 +97,7 @@
         }
 
         .photo-placeholder {
-            width: 180px;
-            height: 240px;
-            margin: 0 auto 30px;
-            background: linear-gradient(135deg, #f5f5f0 0%, #fafaf8 100%);
-            border: 3px solid #d4af37;
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+            display: none;
         }
 
         .deceased-name {
@@ -221,15 +210,16 @@
             position: absolute;
             top: 8px;
             right: 8px;
-            width: 20px;
-            height: 20px;
-            background: #d4af37;
-            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            background: transparent;
+            border: 2px solid #d4af37;
+            border-radius: 2px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.7rem;
-            color: white;
+            color: #d4af37;
             font-weight: 500;
         }
 
@@ -472,11 +462,8 @@
             <div class="section">
                 <div class="section-title">고인 정보</div>
                 <div class="deceased-info">
-                    <div class="photo-placeholder">
-                        고인 사진
-                    </div>
-                    <div class="deceased-name">故 홍길동</div>
-                    <div class="deceased-dates">1950. 01. 01 - 2025. 10. 28</div>
+                    <div class="deceased-name">故 고영곤</div>
+                    <div class="deceased-dates">향년 85세</div>
                 </div>
             </div>
 
@@ -485,24 +472,24 @@
                 <div class="section-title">장례 정보</div>
                 <div class="funeral-info">
                     <div class="info-row">
+                        <div class="info-label">조문기간</div>
+                        <div class="info-value">2025년 10월 29일 ~ 31일</div>
+                    </div>
+                    <div class="info-row">
                         <div class="info-label">발인일시</div>
-                        <div class="info-value">2025년 10월 30일 오전 9시</div>
+                        <div class="info-value">2025년 10월 31일</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">장례식장</div>
-                        <div class="info-value">서울대학교병원 장례식장</div>
+                        <div class="info-value">은파장례문화원</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">빈소</div>
-                        <div class="info-value">특1호실</div>
+                        <div class="info-value">2층 특실</div>
                     </div>
                     <div class="info-row">
                         <div class="info-label">주소</div>
-                        <div class="info-value">서울특별시 종로구 대학로 101</div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-label">연락처</div>
-                        <div class="info-value">02-1234-5678</div>
+                        <div class="info-value">전북특별자치도 군산시 미성로 512</div>
                     </div>
                 </div>
             </div>
@@ -511,51 +498,64 @@
             <div class="section">
                 <div class="section-title">상주 정보</div>
                 <div class="family-info">
-                    <!-- 배우자 -->
-                    <div class="family-category">
-                        <div class="family-label">배우자</div>
-                        <div class="family-members">
-                            <div class="family-member" onclick="showAccountModal('김영희', '부인', '국민은행', '123-456-789012')">
-                                <span class="account-hint">$</span>
-                                <div class="family-member-name">김영희</div>
-                                <div class="family-member-relation">부인</div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- 자녀 -->
                     <div class="family-category">
-                        <div class="family-label">자녀</div>
+                        <div class="family-label">상주</div>
                         <div class="family-members">
-                            <div class="family-member" onclick="showAccountModal('홍철수', '장남', '신한은행', '110-234-567890')">
-                                <span class="account-hint">$</span>
-                                <div class="family-member-name">홍철수</div>
-                                <div class="family-member-relation">장남</div>
+                            <div class="family-member" onclick="showAccountModal('고석우', '아들', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">고석우</div>
+                                <div class="family-member-relation">아들</div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('홍영수', '차남', '우리은행', '1002-345-678901')">
-                                <span class="account-hint">$</span>
-                                <div class="family-member-name">홍영수</div>
-                                <div class="family-member-relation">차남</div>
+                            <div class="family-member" onclick="showAccountModal('소유진', '며느리', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">소유진</div>
+                                <div class="family-member-relation">며느리</div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('홍민수', '삼남', '하나은행', '123-890123-45678')">
-                                <span class="account-hint">$</span>
-                                <div class="family-member-name">홍민수</div>
-                                <div class="family-member-relation">삼남</div>
+                            <div class="family-member" onclick="showAccountModal('고현숙', '딸', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">고현숙</div>
+                                <div class="family-member-relation">딸</div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('홍은지', '장녀', '기업은행', '012-345678-01-234')">
-                                <span class="account-hint">$</span>
-                                <div class="family-member-name">홍은지</div>
-                                <div class="family-member-relation">장녀</div>
+                            <div class="family-member" onclick="showAccountModal('고은희', '딸', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">고은희</div>
+                                <div class="family-member-relation">딸</div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('홍수지', '차녀', '농협은행', '356-0123-4567-89')">
-                                <span class="account-hint">$</span>
-                                <div class="family-member-name">홍수지</div>
-                                <div class="family-member-relation">차녀</div>
+                            <div class="family-member" onclick="showAccountModal('김재구', '사위', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">김재구</div>
+                                <div class="family-member-relation">사위</div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('홍지은', '삼녀', '카카오뱅크', '3333-01-2345678')">
-                                <span class="account-hint">$</span>
-                                <div class="family-member-name">홍지은</div>
-                                <div class="family-member-relation">삼녀</div>
+                            <div class="family-member" onclick="showAccountModal('고현신', '딸', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">고현신</div>
+                                <div class="family-member-relation">딸</div>
+                            </div>
+                            <div class="family-member" onclick="showAccountModal('최윤모', '사위', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">최윤모</div>
+                                <div class="family-member-relation">사위</div>
+                            </div>
+                            <div class="family-member" onclick="showAccountModal('고현준', '딸', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">고현준</div>
+                                <div class="family-member-relation">딸</div>
+                            </div>
+                            <div class="family-member" onclick="showAccountModal('김신중', '사위', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">김신중</div>
+                                <div class="family-member-relation">사위</div>
+                            </div>
+                            <div class="family-member" onclick="showAccountModal('고현경', '딸', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">고현경</div>
+                                <div class="family-member-relation">딸</div>
+                            </div>
+                            <div class="family-member" onclick="showAccountModal('조상원', '사위', '추후 안내', '추후 안내 예정')">
+                                <span class="account-hint"></span>
+                                <div class="family-member-name">조상원</div>
+                                <div class="family-member-relation">사위</div>
                             </div>
                         </div>
                     </div>
@@ -613,10 +613,17 @@
             document.getElementById('modalAccount').textContent = account;
             document.getElementById('accountModal').classList.add('active');
 
-            // 복사 버튼 초기화
+            // 복사 버튼 초기화 및 표시/숨김 처리
             const copyBtn = document.querySelector('.copy-btn');
             copyBtn.textContent = '복사하기';
             copyBtn.classList.remove('copied');
+
+            // 계좌정보가 "추후 안내 예정"이면 복사 버튼 숨김
+            if (account === '추후 안내 예정') {
+                copyBtn.style.display = 'none';
+            } else {
+                copyBtn.style.display = 'block';
+            }
         }
 
         function closeModal() {
