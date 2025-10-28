@@ -9,43 +9,73 @@
 - **계좌정보 모달**: 상주 이름 클릭 시 계좌정보 표시 및 복사 기능
 - **6남매 + 배우자**: 공간을 넉넉하게 배분한 가족 정보 영역
 
+## 현재 정보 (양식2)
+
+### 고인 정보
+- **故 고영곤** (향년 85세)
+- 사진 및 생년월일 생략
+
+### 장례식장 정보
+- **조문기간**: 2025년 10월 29일 ~ 31일
+- **발인일시**: 2025년 10월 31일
+- **장례식장**: 은파장례문화원
+- **빈소**: 2층 특실
+- **주소**: 전북특별자치도 군산시 미성로 512
+
+### 상주 정보
+- 아들 고석우 / 며느리 소유진
+- 딸 고현숙
+- 딸 고은희 / 사위 김재구
+- 딸 고현신 / 사위 최윤모
+- 딸 고현준 / 사위 김신중
+- 딸 고현경 / 사위 조상원
+
+### 계좌 정보
+- 현재: 추후 안내 예정
+- 계좌 정보 업데이트 방법은 아래 참조
+
 ## 정보 수정 방법
 
 `index.html` 파일을 열어 다음 정보를 수정하세요:
 
-### 1. 고인 정보 (52-59번 줄)
+### 1. 고인 정보 (465-466번 줄)
 ```html
-<div class="deceased-name">故 홍길동</div>
-<div class="deceased-dates">1950. 01. 01 - 2025. 10. 28</div>
+<div class="deceased-name">故 고영곤</div>
+<div class="deceased-dates">향년 85세</div>
 ```
 
-### 2. 장례식장 정보 (66-86번 줄)
+### 2. 장례식장 정보 (474-493번 줄)
 ```html
-<div class="info-value">2025년 10월 30일 오전 9시</div>
-<div class="info-value">서울대학교병원 장례식장</div>
-<div class="info-value">특1호실</div>
-<div class="info-value">서울특별시 종로구 대학로 101</div>
-<div class="info-value">02-1234-5678</div>
+<div class="info-value">2025년 10월 29일 ~ 31일</div>
+<div class="info-value">2025년 10월 31일</div>
+<div class="info-value">은파장례문화원</div>
+<div class="info-value">2층 특실</div>
+<div class="info-value">전북특별자치도 군산시 미성로 512</div>
 ```
 
-### 3. 배우자 정보 (96-101번 줄)
+### 3. 상주 정보 및 계좌 정보 (505-559번 줄)
+각 상주의 이름, 관계, 은행, 계좌번호를 수정하세요:
 ```html
-<div class="family-member" onclick="showAccountModal('김영희', '부인', '국민은행', '123-456-789012')">
-    <div class="family-member-name">김영희</div>
-    <div class="family-member-relation">부인</div>
+<div class="family-member" onclick="showAccountModal('고석우', '아들', '신한은행', '110-234-567890')">
+    <span class="account-hint"></span>
+    <div class="family-member-name">고석우</div>
+    <div class="family-member-relation">아들</div>
 </div>
 ```
 
-### 4. 자녀 정보 (107-142번 줄)
-각 자녀의 이름, 관계, 은행, 계좌번호를 수정하세요:
-```html
-<div class="family-member" onclick="showAccountModal('홍철수', '장남', '신한은행', '110-234-567890')">
-```
+**계좌 정보 업데이트 시:**
+- `'추후 안내'`를 실제 은행명으로 변경 (예: `'신한은행'`)
+- `'추후 안내 예정'`을 실제 계좌번호로 변경 (예: `'110-234-567890'`)
+- 복사 버튼이 자동으로 활성화됩니다
 
-### 5. 고인 사진 추가 (선택사항)
-사진을 추가하려면 52번 줄의 `<div class="photo-placeholder">`를 다음과 같이 변경:
+### 4. 고인 사진 추가 (선택사항)
+현재는 사진이 숨겨져 있습니다. 사진을 추가하려면:
+1. CSS에서 `.photo-placeholder { display: none; }`을 제거
+2. HTML 465번 줄 전에 다음 코드 추가:
 ```html
-<img src="photo.jpg" alt="고인 사진" style="width: 180px; height: 240px; object-fit: cover; border: 3px solid #d4af37; border-radius: 2px;">
+<div class="photo-placeholder">
+    <img src="photo.jpg" alt="고인 사진" style="width: 100%; height: 100%; object-fit: cover;">
+</div>
 ```
 
 ## GitHub Pages 배포 설정
