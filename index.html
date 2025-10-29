@@ -169,58 +169,73 @@
         }
 
         .family-members {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .family-group {
+            background: #ffffff;
+            border: 1px solid #e8e8e8;
+            padding: 20px 25px;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .family-group:hover {
+            border-color: #d4af37;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+        }
+
+        .family-group-members {
+            display: flex;
+            gap: 30px;
+            flex: 1;
         }
 
         .family-member {
-            background: #ffffff;
-            border: 1px solid #e8e8e8;
-            padding: 18px 15px;
-            border-radius: 2px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: all 0.2s ease;
         }
 
-        .family-member:hover {
-            border-color: #d4af37;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
-            transform: translateY(-2px);
+        .family-member:hover .family-member-name {
+            color: #d4af37;
         }
 
         .family-member-name {
             font-size: 1rem;
             font-weight: 500;
             color: #3a3a3a;
-            margin-bottom: 5px;
             letter-spacing: 1px;
+            transition: color 0.2s ease;
         }
 
         .family-member-relation {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #999;
             font-weight: 300;
             letter-spacing: 0.5px;
         }
 
         .account-hint {
-            position: absolute;
-            top: 8px;
-            right: 8px;
             width: 18px;
             height: 18px;
             background: transparent;
             border: 2px solid #d4af37;
             border-radius: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.7rem;
-            color: #d4af37;
-            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .family-separator {
+            color: #ccc;
+            font-weight: 300;
+            margin: 0 5px;
         }
 
         /* 조문 안내 */
@@ -416,8 +431,13 @@
                 padding-bottom: 30px;
             }
 
-            .family-members {
-                grid-template-columns: repeat(2, 1fr);
+            .family-group {
+                padding: 15px 18px;
+            }
+
+            .family-group-members {
+                flex-direction: column;
+                gap: 15px;
             }
 
             .funeral-info,
@@ -442,8 +462,8 @@
                 letter-spacing: 4px;
             }
 
-            .family-members {
-                grid-template-columns: 1fr;
+            .family-group {
+                padding: 12px 15px;
             }
         }
     </style>
@@ -498,64 +518,103 @@
             <div class="section">
                 <div class="section-title">상주 정보</div>
                 <div class="family-info">
-                    <!-- 자녀 -->
                     <div class="family-category">
                         <div class="family-label">상주</div>
                         <div class="family-members">
-                            <div class="family-member" onclick="showAccountModal('고석우', '아들', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">고석우</div>
-                                <div class="family-member-relation">아들</div>
+                            <!-- 그룹 1: 딸 고현숙 -->
+                            <div class="family-group">
+                                <div class="family-group-members">
+                                    <div class="family-member" onclick="showAccountModal('고현숙', '딸', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">딸</div>
+                                        <div class="family-member-name">고현숙</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('소유진', '며느리', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">소유진</div>
-                                <div class="family-member-relation">며느리</div>
+
+                            <!-- 그룹 2: 딸 고은희 / 사위 김재구 -->
+                            <div class="family-group">
+                                <div class="family-group-members">
+                                    <div class="family-member" onclick="showAccountModal('고은희', '딸', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">딸</div>
+                                        <div class="family-member-name">고은희</div>
+                                    </div>
+                                    <span class="family-separator">/</span>
+                                    <div class="family-member" onclick="showAccountModal('김재구', '사위', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">사위</div>
+                                        <div class="family-member-name">김재구</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('고현숙', '딸', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">고현숙</div>
-                                <div class="family-member-relation">딸</div>
+
+                            <!-- 그룹 3: 딸 고현신 / 사위 최윤모 -->
+                            <div class="family-group">
+                                <div class="family-group-members">
+                                    <div class="family-member" onclick="showAccountModal('고현신', '딸', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">딸</div>
+                                        <div class="family-member-name">고현신</div>
+                                    </div>
+                                    <span class="family-separator">/</span>
+                                    <div class="family-member" onclick="showAccountModal('최윤모', '사위', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">사위</div>
+                                        <div class="family-member-name">최윤모</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('고은희', '딸', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">고은희</div>
-                                <div class="family-member-relation">딸</div>
+
+                            <!-- 그룹 4: 딸 고현준 / 사위 김신중 -->
+                            <div class="family-group">
+                                <div class="family-group-members">
+                                    <div class="family-member" onclick="showAccountModal('고현준', '딸', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">딸</div>
+                                        <div class="family-member-name">고현준</div>
+                                    </div>
+                                    <span class="family-separator">/</span>
+                                    <div class="family-member" onclick="showAccountModal('김신중', '사위', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">사위</div>
+                                        <div class="family-member-name">김신중</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('김재구', '사위', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">김재구</div>
-                                <div class="family-member-relation">사위</div>
+
+                            <!-- 그룹 5: 딸 고현경 / 사위 조상원 -->
+                            <div class="family-group">
+                                <div class="family-group-members">
+                                    <div class="family-member" onclick="showAccountModal('고현경', '딸', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">딸</div>
+                                        <div class="family-member-name">고현경</div>
+                                    </div>
+                                    <span class="family-separator">/</span>
+                                    <div class="family-member" onclick="showAccountModal('조상원', '사위', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">사위</div>
+                                        <div class="family-member-name">조상원</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="family-member" onclick="showAccountModal('고현신', '딸', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">고현신</div>
-                                <div class="family-member-relation">딸</div>
-                            </div>
-                            <div class="family-member" onclick="showAccountModal('최윤모', '사위', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">최윤모</div>
-                                <div class="family-member-relation">사위</div>
-                            </div>
-                            <div class="family-member" onclick="showAccountModal('고현준', '딸', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">고현준</div>
-                                <div class="family-member-relation">딸</div>
-                            </div>
-                            <div class="family-member" onclick="showAccountModal('김신중', '사위', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">김신중</div>
-                                <div class="family-member-relation">사위</div>
-                            </div>
-                            <div class="family-member" onclick="showAccountModal('고현경', '딸', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">고현경</div>
-                                <div class="family-member-relation">딸</div>
-                            </div>
-                            <div class="family-member" onclick="showAccountModal('조상원', '사위', '추후 안내', '추후 안내 예정')">
-                                <span class="account-hint"></span>
-                                <div class="family-member-name">조상원</div>
-                                <div class="family-member-relation">사위</div>
+
+                            <!-- 그룹 6: 아들 고석우 / 아내 소유진 -->
+                            <div class="family-group">
+                                <div class="family-group-members">
+                                    <div class="family-member" onclick="showAccountModal('고석우', '아들', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">아들</div>
+                                        <div class="family-member-name">고석우</div>
+                                    </div>
+                                    <span class="family-separator">/</span>
+                                    <div class="family-member" onclick="showAccountModal('소유진', '며느리', '추후 안내', '추후 안내 예정')">
+                                        <span class="account-hint"></span>
+                                        <div class="family-member-relation">며느리</div>
+                                        <div class="family-member-name">소유진</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
